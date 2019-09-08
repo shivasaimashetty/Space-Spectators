@@ -1,0 +1,14 @@
+{% extends 'groups/group_base.html' %}
+{% block group_content %}
+<h1>My Groups</h1>
+<div class="container">
+  <ul>
+    {% for g in my_groups %}
+    {% if g.user == user %}
+  <h2><li><a href="{% url 'groups:single' slug=g.group.slug %}">{{g.group}}</a></li></h2>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
+<li>

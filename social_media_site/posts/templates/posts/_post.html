@@ -1,0 +1,40 @@
+<div class="media">
+	<div class="media-body">
+    <div class="post">
+    {% if post.photo %}
+    <img width=600 height=400 src="{{post.photo.url}}" alt=""/>
+    {% endif %}
+		<h5>{{ post.message }}</h5>
+    <span><h5 class="mr-5"><a href="{% url 'posts:for_user' username=post.user.username %}">@{{ post.user.username }}</a></h5></span>
+			<time class="time"><a href="{% url 'posts:single' username=post.user.username pk=post.pk %}">{{ post.created_date }}</a></time>
+			{% if post.group %}
+			<span class="group-name">in <a>{{ post.group.name }}</a></span>
+			{% endif %}
+
+		<div class="media-footer">
+			{% if user.is_authenticated and post.user == user and not hide_delete %}
+				<a href="{% url 'posts:delete' pk=post.pk %}" title="delete" class="btn btn-simple">
+					<span class="fa fa-remove text-danger" aria-hidden="true"></span>
+					<span class="text-danger icon-label">Delete Post</span>
+				</a>
+			{% endif %}
+		</div>
+      <a class='btn btn-warning btn-comment' href="{% url 'posts:add_comment_post' pk=post.pk %}">Add Comment</a>
+  </div>
+      {% for comment in post.comments.all %}
+        <br>
+        {% if user.is_authenticated %}
+        <div class="comment">
+        <p>{{comment.text|safe|linebreaks}}</p>
+        <span>Posted By: @{{comment.author.username}} <span>
+        <span>{{comment.create_date}}</span>
+        {% if comment.author == user %}
+        <span><a href="{% url 'posts:remove_comment' pk=comment.pk %}">Delete</a></span>
+        {% endif %}
+        </div>
+        {% endif %}
+        {% empty %}
+        <p>No comments</p>
+        {% endfor %}
+    </div>
+</div>

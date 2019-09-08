@@ -1,0 +1,40 @@
+{% extends "posts/post_base.html" %}
+{% block prepost %}
+<!-- <div class="col-md-4"> -->
+  <!-- {% if user.is_authenticated %}
+    <div class="">
+      <div class="content">
+          <h5>Your Groups</h5>
+          <ul>
+            {% for member_group in user_groups.all %}
+				        <li class="group li-with-bullet">
+					            <a href="{% url 'groups:single' slug=member_group.group.slug %}">{{ member_group.group.name }}</a>
+				        </li>
+				    {% endfor %}
+          </ul>
+      </div>
+    </div>
+    {% endif %}
+    <div class="">
+      <div class="content">
+          <h5>All Groups</h5>
+          <ul>
+            {% for other_group in get_other_groups %}
+              <li class="group li-with-bullet"><a href="{% url 'groups:single' slug=other_group.group.slug}">{{other_group.group.name}}</a></li>
+            {% endfor %}
+          </ul>
+      </div>
+    </div> -->
+<!-- </div> -->
+{% endblock %}
+
+{% block post_content %}
+
+
+<div class="col-md-8">
+  <h1>Your Space Wall</h1>
+  {% for post in post_list %}
+    {% include "posts/_post.html" %}
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+
+body{
+  margin: 0 !important;
+  background-color: black !important;
+  color:white !important;
+  font-size: 14px;
+  /* background: url("/static/images/200799.jpg");
+  background-position: center;
+  background-size: cover;
+  opacity:0.3px; */
+}
+
+div.comment{
+  border: 0.5px dashed white;
+  font-size: 14px;
+  border-radius: 20px;
+  padding: 5px;
+  margin: 0px;
+}
+
+div.delete{
+  padding:10px;
+  margin:0px;
+}
+
+div.media{
+  border: 0.5px solid blue;
+  border-radius: 15px;
+  margin: auto;
+  padding: 20px;
+}
+
+div.post{
+  padding: 10px;
+}
+
+div.group-content{
+  padding: 10px;
+}

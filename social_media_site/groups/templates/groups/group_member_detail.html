@@ -1,0 +1,14 @@
+{% extends "groups/group_base.html" %}
+{% block group_content %}
+<h1>Members</h1>
+<div class="container">
+{% if group.members.count == 0 %}
+<p>No members yet!</p>
+{% endif %}
+{% for g in group.members.all %}
+  <ul>
+    <h2><li class=""><a href="{% url 'posts:for_user' username=g.username %}">@{{g.username}}</a></li></h2>
+  </ul>
+{% endfor %}
+</div>
+{% endblock %}
